@@ -16,16 +16,16 @@ Ansible Playbook to install Kubernetes
 `sudo pip install netaddr`
 
 ## Running the Playbook
-`ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml`
-`ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --start-at-task='<name of the task>'`
-`ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --step --start-at-task='<name of the task>'`
-`ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --list-hosts`
+``ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml
+ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --start-at-task='<name of the task>'
+ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --step --start-at-task='<name of the task>'
+ansible-playbook -i hosts -l k8s_cluster install-k8s.yaml --list-hosts
 
 ## Checking Kubernetes Installation
-`kubectl get nodes`
+``kubectl get nodes``
 
 ## Source
-https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
-https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
-https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
-https://stackedit.io/app#
+- https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
+- https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
+- https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
+- https://stackedit.io/app#
