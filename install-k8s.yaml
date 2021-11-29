@@ -110,15 +110,7 @@
         daemon_reload: yes
         state: restarted
 
-    - name: make sure packages required are installed on this control node
-      pip:
-        name:
-          - netaddr
-      check_mode: true
-      when: "'k8s_masters' in group_names"
-      register: package_state
-
     - name: Initialize the Kubernetes cluster using kubeadm
-      command: kubeadm init --apiserver-advertise-address="{{ ansible_eth0.ipv4.address }}" --apiserver-cert-extra-sans="{{ ansible_eth0.ipv4.address }}" --node-name {{ ansible_hostname }} --pod-network-cidr={{ (ansible_default_ipv4.network + '/' + ansible_default_ipv4.netmask) | ipaddr('network/prefix') }} --ignore-preflight-errors=NumCPU,Mem
+      command: kubeadm init --ignore-preflight-errors=NumCPU --apiserver-advertise-address="{{ ansible_eth0.ipv4.address }}" --apiserver-cert-extra-sans="{{ ansible_eth0.ipv4.address }}" --node-name {{ ansible_hostname }} --pod-network-cidr={{ (ansible_default_ipv4.network + '/' + ansible_default_ipv4.netmask) | ipaddr('network/prefix') }}
       #command: kubeadm init --apiserver-advertise-address="{{ ansible_eth0.ipv4.address }}" --apiserver-cert-extra-sans="{{ ansible_eth0.ipv4.address }}" --node-name {{ ansible_hostname }} --pod-network-cidr={{ (ansible_default_ipv4.network + '/' + ansible_default_ipv4.netmask) | ipaddr('network/prefix') }}
       when: "'k8s_masters' in group_names"
